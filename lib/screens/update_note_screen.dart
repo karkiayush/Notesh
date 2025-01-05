@@ -14,18 +14,24 @@ class UpdateNoteScreen extends StatefulWidget {
 }
 
 class _UpdateNoteScreenState extends State<UpdateNoteScreen> {
-  final TextEditingController _titleController = TextEditingController();
-  final TextEditingController _descriptionController = TextEditingController();
+  TextEditingController? _titleController;
+  TextEditingController? _descriptionController;
+
   late Color _selectedColor = noteContainerColor;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   void dispose() {
     // disposing inorder to prevent memory leaks
-    _titleController.dispose();
-    _descriptionController.dispose();
+    _titleController!.dispose();
+    _descriptionController!.dispose();
     super.dispose();
   }
-
 
   // For the color picker
   void _openColorPicker() {
@@ -94,7 +100,7 @@ class _UpdateNoteScreenState extends State<UpdateNoteScreen> {
           ButtonWidget(
             buttonIcon: Icons.check_circle_outlined,
             iconColor: iconColor,
-            onTap: (){
+            onTap: () {
               showDialogBoxWidget(
                 context,
                 title: "Save Changes?",
@@ -120,7 +126,7 @@ class _UpdateNoteScreenState extends State<UpdateNoteScreen> {
                 borderRadius: BorderRadius.circular(10),
               ),
               child: FormWidget(
-                controller: _titleController,
+                controller: _titleController!,
                 hintText: "Title",
                 fontSize: 25,
                 fontWeight: FontWeight.bold,
@@ -134,7 +140,7 @@ class _UpdateNoteScreenState extends State<UpdateNoteScreen> {
                 borderRadius: BorderRadius.circular(10),
               ),
               child: FormWidget(
-                controller: _descriptionController,
+                controller: _descriptionController!,
                 hintText: "type anything.....",
                 fontSize: 20,
               ),
