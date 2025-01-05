@@ -4,8 +4,10 @@ import 'package:notesh/theme/colors.dart';
 class ButtonWidget extends StatelessWidget {
   final IconData buttonIcon;
   final VoidCallback? onTap;
+  final Color? iconColor;
 
-  const ButtonWidget({super.key, required this.buttonIcon, this.onTap});
+  const ButtonWidget(
+      {super.key, required this.buttonIcon, this.onTap, this.iconColor});
 
   @override
   Widget build(BuildContext context) {
@@ -15,11 +17,14 @@ class ButtonWidget extends StatelessWidget {
         width: 40,
         height: 40,
         decoration: BoxDecoration(
-          color: buttonColor,
+          color: buttonContainerColor,
           borderRadius: BorderRadius.circular(10),
         ),
         child: Center(
-          child: Icon(buttonIcon),
+          child: Icon(
+            buttonIcon,
+            color: iconColor,
+          ),
         ),
       ),
     );
