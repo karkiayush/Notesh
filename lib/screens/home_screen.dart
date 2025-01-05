@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:notesh/screens/update_note_screen.dart';
 import 'package:notesh/theme/colors.dart';
 import 'package:notesh/widgets/button_widget.dart';
+import 'package:notesh/widgets/dialog_box_widget.dart';
 import 'package:notesh/widgets/single_note_widget.dart';
 
 import 'create_note_screen.dart';
@@ -38,7 +40,26 @@ class HomeScreen extends StatelessWidget {
       body: ListView.builder(
         itemCount: 10,
         itemBuilder: (context, index) {
-          return SingleNoteWidget();
+          return SingleNoteWidget(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => UpdateNoteScreen(),
+                ),
+              );
+            },
+            onLongPress: () {
+              showDialogBoxWidget(
+                context,
+                title: "Confirm to delete the note!",
+                height: 230,
+                onTapYes: () {
+                  Navigator.pop(context);
+                },
+              );
+            },
+          );
         },
       ),
       floatingActionButton: FloatingActionButton(

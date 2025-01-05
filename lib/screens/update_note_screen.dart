@@ -4,15 +4,16 @@ import 'package:notesh/widgets/form_widget.dart';
 
 import '../theme/colors.dart';
 import '../widgets/button_widget.dart';
+import '../widgets/dialog_box_widget.dart';
 
-class CreateNoteScreen extends StatefulWidget {
-  const CreateNoteScreen({super.key});
+class UpdateNoteScreen extends StatefulWidget {
+  const UpdateNoteScreen({super.key});
 
   @override
-  State<CreateNoteScreen> createState() => _CreateNoteScreenState();
+  State<UpdateNoteScreen> createState() => _UpdateNoteScreenState();
 }
 
-class _CreateNoteScreenState extends State<CreateNoteScreen> {
+class _UpdateNoteScreenState extends State<UpdateNoteScreen> {
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
   late Color _selectedColor = noteContainerColor;
@@ -25,6 +26,8 @@ class _CreateNoteScreenState extends State<CreateNoteScreen> {
     super.dispose();
   }
 
+
+  // For the color picker
   void _openColorPicker() {
     showDialog(
       context: context,
@@ -73,7 +76,7 @@ class _CreateNoteScreenState extends State<CreateNoteScreen> {
       appBar: AppBar(
         backgroundColor: appBarColor,
         title: Text(
-          "New Note",
+          "Update Note",
           style: TextStyle(
             fontSize: 30,
             fontWeight: FontWeight.bold,
@@ -89,9 +92,18 @@ class _CreateNoteScreenState extends State<CreateNoteScreen> {
           ),
           SizedBox(width: 20),
           ButtonWidget(
-            buttonIcon: Icons.save_as_rounded,
+            buttonIcon: Icons.check_circle_outlined,
             iconColor: iconColor,
-            onTap: (){},
+            onTap: (){
+              showDialogBoxWidget(
+                context,
+                title: "Save Changes?",
+                height: 230,
+                onTapYes: () {
+                  Navigator.pop(context);
+                },
+              );
+            },
           ),
           SizedBox(width: 5),
         ],

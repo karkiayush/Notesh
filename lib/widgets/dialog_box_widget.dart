@@ -39,7 +39,7 @@ showDialogBoxWidget(
                   GestureDetector(
                     onTap: onTapYes,
                     child: Container(
-                      width: 150,
+                      width: 100,
                       height: 40,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
@@ -59,7 +59,7 @@ showDialogBoxWidget(
                   GestureDetector(
                     onTap: () => Navigator.pop(context),
                     child: Container(
-                      width: 150,
+                      width: 100,
                       height: 40,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(5),
