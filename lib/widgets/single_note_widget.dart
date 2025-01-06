@@ -37,7 +37,7 @@ class SingleNoteWidget extends StatelessWidget {
             Text(
               title != null ? title! : "Title",
               style: TextStyle(
-                fontSize: 25,
+                fontSize: 21,
                 fontWeight: FontWeight.bold,
                 color: textColor,
               ),
@@ -45,7 +45,7 @@ class SingleNoteWidget extends StatelessWidget {
             Text(
               body != null ? body! : "some dummy text for body",
               style: TextStyle(
-                fontSize: 20,
+                fontSize: 17,
                 color: textColor,
                 fontWeight: FontWeight.w500,
               ),

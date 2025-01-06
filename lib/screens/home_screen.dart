@@ -81,7 +81,7 @@ class HomeScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (_) => UpdateNoteScreen(),
+                      builder: (_) => UpdateNoteScreen(noteModel: notes[index]),
                     ),
                   );
                 },
