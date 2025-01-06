@@ -4,7 +4,7 @@ import '../theme/colors.dart';
 class SingleNoteWidget extends StatelessWidget {
   final String? title;
   final String? body;
-  final int? color;
+  final Color? color;
   final VoidCallback? onTap;
   final VoidCallback? onLongPress;
 
@@ -26,9 +26,8 @@ class SingleNoteWidget extends StatelessWidget {
         margin: EdgeInsets.all(8),
         padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         width: double.infinity,
-        height: 100,
         decoration: BoxDecoration(
-          color: color != null ? Color(color!) : noteContainerColor,
+          color: color ?? noteContainerColor,
           borderRadius: BorderRadius.circular(10),
         ),
         child: Column(

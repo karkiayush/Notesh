@@ -1,12 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:notesh/models/note_model.dart';
+import 'package:notesh/widgets/toast_widget.dart';
 
 class DbHandler {
-  static final noteCollection = FirebaseFirestore.instance.collection("notes");
-
   static Future<void> createNote(NoteModel note) async {
+    final noteCollection = FirebaseFirestore.instance.collection("notes");
     final id = noteCollection.doc().id;
     // Creating a document from obtained data
     final newNote = NoteModel(
@@ -18,23 +16,16 @@ class DbHandler {
 
     // Create note
     try {
-      noteCollection.doc(id).set(newNote);
+      await noteCollection.doc(id).set(newNote);
     } catch (e) {
       // Displaying error message
-      Fluttertoast.showToast(
-        msg: "Error: ${e.toString()}",
-        toastLength: Toast.LENGTH_LONG,
-        gravity: ToastGravity.BOTTOM,
-        timeInSecForIosWeb: 2,
-        backgroundColor: Colors.red,
-        textColor: Colors.black,
-        fontSize: 16,
-      );
+      ToastWidget.getErrorToast(e);
     }
   }
 
   // Read note
   static Stream<List<NoteModel>> getNotes() {
+    final noteCollection = FirebaseFirestore.instance.collection("notes");
     return noteCollection.snapshots().map(
       (querySnapshot) {
         return querySnapshot.docs.map(
@@ -48,6 +39,7 @@ class DbHandler {
 
 // Update note
   static Future<void> updateNote(NoteModel note) async {
+    final noteCollection = FirebaseFirestore.instance.collection("notes");
     final newNote = NoteModel(
       noteId: note.noteId,
       title: note.title,
@@ -58,32 +50,17 @@ class DbHandler {
     try {
       await noteCollection.doc(note.noteId).update(newNote);
     } catch (e) {
-      Fluttertoast.showToast(
-        msg: "Error: ${e.toString()}",
-        toastLength: Toast.LENGTH_LONG,
-        gravity: ToastGravity.BOTTOM,
-        timeInSecForIosWeb: 2,
-        backgroundColor: Colors.red,
-        textColor: Colors.black,
-        fontSize: 16,
-      );
+      ToastWidget.getErrorToast(e);
     }
   }
 
   // Delete note
   static Future<void> deleteNote(String id) async {
+    final noteCollection = FirebaseFirestore.instance.collection("notes");
     try {
       await noteCollection.doc(id).delete();
     } catch (e) {
-      Fluttertoast.showToast(
-        msg: "Error: ${e.toString()}",
-        toastLength: Toast.LENGTH_LONG,
-        gravity: ToastGravity.BOTTOM,
-        timeInSecForIosWeb: 2,
-        backgroundColor: Colors.red,
-        textColor: Colors.black,
-        fontSize: 16,
-      );
+      ToastWidget.getErrorToast(e);
     }
   }
 }

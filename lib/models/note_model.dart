@@ -2,13 +2,13 @@ import 'dart:ui';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class NoteModel {
-  final String noteId;
+  final String? noteId;
   final String title;
   final String content;
   final Color noteContainerColor;
 
   NoteModel({
-    required this.noteId,
+    this.noteId,
     required this.title,
     required this.content,
     required this.noteContainerColor,
@@ -16,13 +16,14 @@ class NoteModel {
 
   // factory constructor convert the document into dart object
   factory NoteModel.fromSnapshot(
-    DocumentSnapshot<Map<String, dynamic>> snapshot,
-  ) {
+      // DocumentSnapshot<Map<String, dynamic>> snapshot,
+      DocumentSnapshot doc) {
+    final data = doc.data() as Map<String, dynamic>;
     return NoteModel(
-      noteId: snapshot["id"],
-      title: snapshot["title"],
-      content: snapshot["content"],
-      noteContainerColor: snapshot["noteContainerColor"],
+      noteId: data["id"],
+      title: data["title"],
+      content: data["content"],
+      noteContainerColor: Color(data["noteContainerColor"]),
     );
   }
 
@@ -32,7 +33,7 @@ class NoteModel {
       "id": noteId,
       "title": title,
       "content": content,
-      "noteContainerColor": noteContainerColor,
+      "noteContainerColor": noteContainerColor.value,
     };
   }
 }
