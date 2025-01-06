@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "818659616372",
+    "project_id": "notesh-database",
+    "storage_bucket": "notesh-database.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:818659616372:android:99ac9252a9d8a1d261d321",
+        "android_client_info": {
+          "package_name": "com.aayush.notesh.notesh"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4qfuSWyR0Wv6rw2kpyHZarmWgRptznWg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
