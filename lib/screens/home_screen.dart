@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:notesh/database/db_handler.dart';
 import 'package:notesh/models/note_model.dart';
+import 'package:notesh/screens/search_note_screen.dart';
 import 'package:notesh/screens/update_note_screen.dart';
 import 'package:notesh/theme/colors.dart';
 import 'package:notesh/widgets/button_widget.dart';
@@ -9,8 +10,15 @@ import 'package:notesh/widgets/single_note_widget.dart';
 
 import 'create_note_screen.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final TextEditingController _searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +36,14 @@ class HomeScreen extends StatelessWidget {
         centerTitle: true,
         actions: <Widget>[
           ButtonWidget(
-            buttonIcon: Icons.search_sharp,
+            buttonIcon: Icons.search,
             iconColor: iconColor,
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => SearchNoteScreen()),
+              );
+            },
           ),
           SizedBox(width: 20),
           ButtonWidget(
@@ -91,6 +105,7 @@ class HomeScreen extends StatelessWidget {
                     title: "Confirm to delete the note!",
                     height: 230,
                     onTapYes: () {
+                      DbHandler.deleteNote(notes[index].noteId!);
                       Navigator.pop(context);
                     },
                   );
