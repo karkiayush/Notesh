@@ -8,8 +8,9 @@
 - **Create Notes**: Add new notes effortlessly.
 - **Update Notes**: Edit existing notes with ease.
 - **Delete Notes**: Remove notes when they are no longer needed.
+- **Search Notes**: Search notes on the basis of note title.
+- **Custom Note Colors:**: Personalize your notes with a customizable color palette, allowing you to assign unique colors to each note for better organization and visual appeal.
 - **User-Friendly Interface**: Simple and intuitive design.
-
 ---
 
 ## Tech Stack
@@ -69,5 +70,5 @@ Contributions are welcome! To contribute:
 ---
 
 ## Contact
-For any inquiries or support, reach out to [Ayush Karki](mailto:karkiayush@gmail.com).
+For any inquiries or support, reach out to [Aayush Karki](mailto:karkiayush@gmail.com).
 
