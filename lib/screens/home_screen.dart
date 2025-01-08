@@ -4,10 +4,10 @@ import 'package:notesh/models/note_model.dart';
 import 'package:notesh/screens/search_note_screen.dart';
 import 'package:notesh/screens/update_note_screen.dart';
 import 'package:notesh/theme/colors.dart';
+import 'package:notesh/widgets/app_info_widget.dart';
 import 'package:notesh/widgets/button_widget.dart';
 import 'package:notesh/widgets/dialog_box_widget.dart';
 import 'package:notesh/widgets/single_note_widget.dart';
-
 import 'create_note_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -18,10 +18,9 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final TextEditingController _searchController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
+    AppInfoWidget appInfoWidget = AppInfoWidget(context: context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: appBarColor,
@@ -49,6 +48,9 @@ class _HomeScreenState extends State<HomeScreen> {
           ButtonWidget(
             buttonIcon: Icons.info_rounded,
             iconColor: iconColor,
+            onTap: () {
+              appInfoWidget.showAppInfo();
+            },
           ),
           SizedBox(width: 5),
         ],

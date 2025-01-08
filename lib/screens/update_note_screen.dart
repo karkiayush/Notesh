@@ -3,7 +3,6 @@ import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:notesh/database/db_handler.dart';
 import 'package:notesh/models/note_model.dart';
 import 'package:notesh/widgets/form_widget.dart';
-
 import '../theme/colors.dart';
 import '../widgets/button_widget.dart';
 import '../widgets/dialog_box_widget.dart';
